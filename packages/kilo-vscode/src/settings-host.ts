@@ -32,6 +32,7 @@ export const KILO_SETTING_KEYS = [
   "claudeCodeCompat",
   "extraCaCerts",
   "languageCommitMessage",
+  "indexing.showButtonWhenDisabled",
   "autocomplete.enableAutoTrigger",
   "autocomplete.enableSmartInlineTaskKeybinding",
   "autocomplete.enableChatAutocomplete",

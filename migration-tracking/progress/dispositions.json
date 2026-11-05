@@ -1510,5 +1510,16 @@
     "state": "dropped",
     "note": "v1 v2-compat config test expected @kilocode/kilo-indexing in config.plugin because Kilo injected built-in plugins during load. v2 injects nothing into config.plugin; the plugin is registered by the host.",
     "by": "codebase-indexing-2"
+  },
+  "module:packages/kilo-vscode/src/indexing-consent.ts": {
+    "state": "ported",
+    "v2": "packages/kilo-vscode/src/indexing/consent.ts",
+    "note": "Machine-local consent per project in globalState and the project list (workspace plus registered Agent Manager projects). packages/kilo-vscode/src/indexing/host.ts sends it to the server through the consent method of kilocode.indexing and re-sends it on every server start; packages/kilo-vscode/test/indexing-consent.test.ts carries the v1 test.",
+    "by": "codebase-indexing-2"
+  },
+  "module:packages/kilo-vscode/docs/non-agent-features/codebase-indexing-semantic-search.md": {
+    "state": "dropped",
+    "note": "Planning note that lists the remaining work to port indexing from kilocode-legacy, not runtime code or user documentation. The work it lists is done by this port (packages/kilo-indexing, packages/kilo-plugin/src/indexing); v2 kilo-vscode has no docs folder.",
+    "by": "codebase-indexing-2"
   }
 }

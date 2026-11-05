@@ -90,6 +90,8 @@ export function environment(base: NodeJS.ProcessEnv, extra: Record<string, strin
     // The server trusts the OS certificate store, as VS Code does by default.
     NODE_USE_SYSTEM_CA: base.NODE_USE_SYSTEM_CA ?? "1",
     KILO_CLIENT: "vscode",
+    // The indexing plugin gates on machine-local project consent only when the server runs for VS Code.
+    KILO_PLATFORM: "vscode",
     ...extra,
   }
 }
@@ -108,6 +110,11 @@ export function settingsEnvironment(values: {
     ...(values.claudeCodeCompat ? {} : { KILO_DISABLE_CLAUDE_CODE: "true" }),
     ...(extraCaCerts.length > 0 ? { NODE_EXTRA_CA_CERTS: extraCaCerts } : {}),
   }
+}
+
+/** The indexing server gate: without a workspace folder the server must not index anything. */
+export function indexingEnvironment(folders: number | undefined): Record<string, string> {
+  return folders && folders > 0 ? {} : { KILO_DISABLE_CODEBASE_INDEXING: "vscode-no-workspace" }
 }
 
 /** The URL from the first complete JSON line `{"url":"http://127.0.0.1:<port>"}`. */
